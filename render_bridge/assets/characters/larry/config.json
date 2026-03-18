@@ -1,9 +1,0 @@
-{
-    "location": "witness",
-    "gender": "male",
-    "sprites": {
-        "neutral": ["normal", "scratch", "thinking"],
-        "positive": ["hello", "stylish"],
-        "negative": ["mad", "nervous", "thumbsup"]
-    }
-}
