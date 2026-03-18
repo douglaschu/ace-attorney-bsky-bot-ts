@@ -1,0 +1,11 @@
+# environment files
+.env
+.env.*
+
+node_modules/
+
+dist/
+
+bot.db
+
+render_bridge/venv/

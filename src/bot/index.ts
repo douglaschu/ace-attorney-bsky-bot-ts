@@ -6,6 +6,7 @@ import {
      hasProcessed,
      markProcessed,
 } from "./database.js";
+import { getThread } from "./bluesky.js";
 
 dotenv.config();
 
@@ -39,6 +40,10 @@ async function main() {
                console.log(`Skipping already processed: ${m.uri}`);
                continue;
           }
+
+          const thread = await getThread(agent, m.uri);
+          console.log(`Thread has ${thread.length} post(s)`);
+          console.log(thread);
 
           await agent.post({
                text: "Order! Order in the court!",
