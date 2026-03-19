@@ -1,5 +1,6 @@
 import os
-os.environ["oe_bypass_sentiment"] = "1"
+# Bypass sentiment model statement
+# os.environ["oe_bypass_sentiment"] = "1"
 
 import sys
 import json

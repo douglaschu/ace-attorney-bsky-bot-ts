@@ -8,6 +8,10 @@ dist/
 
 bot.db
 
+assets/
+
+output.mp4
+
 render_bridge/venv/
 render_bridge/output.mp4
 render_bridge/assets/
