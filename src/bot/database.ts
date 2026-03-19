@@ -9,7 +9,9 @@ db.exec(`CREATE TABLE IF NOT EXISTS cursor (
 
     CREATE TABLE IF NOT EXISTS processed_posts (
         uri TEXT PRIMARY KEY,
-        processed_at TEXT NOT NULL DEFAULT (datetime('now'))
+        processed_at TEXT NOT NULL DEFAULT (datetime('now')),
+        reply_uri TEXT,
+        requester_did TEXT
     );
     `);
 
@@ -33,8 +35,25 @@ export function hasProcessed(uri: string): boolean {
      return row !== undefined;
 }
 
-export function markProcessed(uri: string): void {
-     db.prepare("INSERT OR IGNORE INTO processed_posts (uri) VALUES (?)").run(
-          uri,
-     );
+export function markProcessed(
+     uri: string,
+     replyUri: string,
+     requesterDid: string,
+): void {
+     db.prepare(
+          "INSERT OR IGNORE INTO processed_posts (uri, reply_uri, requester_did) VALUES (?, ?, ?)",
+     ).run(uri, replyUri, requesterDid);
+}
+
+export function getRenderByReplyUri(
+     replyUri: string,
+): { uri: string; reply_uri: string; requester_did: string } | null {
+     const row = db
+          .prepare(
+               "SELECT uri, reply_uri, requester_did FROM processed_posts WHERE reply_uri = ?",
+          )
+          .get(replyUri) as
+          | { uri: string; reply_uri: string; requester_did: string }
+          | undefined;
+     return row ?? null;
 }
