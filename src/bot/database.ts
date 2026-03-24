@@ -1,6 +1,8 @@
 import Database from "better-sqlite3";
+import { mkdir, mkdirSync } from "fs";
 
-const db = new Database("bot.db");
+mkdirSync("data", { recursive: true });
+const db = new Database("data/bot.db");
 
 db.exec(`CREATE TABLE IF NOT EXISTS cursor (
     id INTEGER PRIMARY KEY CHECK(id = 1),

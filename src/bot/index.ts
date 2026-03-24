@@ -10,6 +10,7 @@ import {
      getRenderByReplyUri,
 } from "./database.js";
 import { getThread } from "./bluesky.js";
+import { resolve } from "dns";
 
 dotenv.config();
 
@@ -151,4 +152,15 @@ async function main() {
      await agent.updateSeenNotifications();
 }
 
-main();
+async function loop() {
+     while (true) {
+          try {
+               await main();
+          } catch (err) {
+               console.error("Error in main loop:", err);
+          }
+          await new Promise((resolve) => setTimeout(resolve, 5 * 60 * 1000));
+     }
+}
+
+loop();

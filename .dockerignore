@@ -1,0 +1,7 @@
+node_modules/
+dist/
+render_bridge/venv/
+bot.db
+output.mp4
+.env
+*.log

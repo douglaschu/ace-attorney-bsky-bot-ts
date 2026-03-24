@@ -44,7 +44,7 @@ murmurhash==1.0.15
 networkx==3.4.2
 nltk==3.9.3
 numpy==1.26.4
--e git+https://github.com/douglaschu/objection_engine.git@e9c77593e6ef3729b5377f7ab528f9a6fe2c8d6b#egg=objection_engine
+git+https://github.com/douglaschu/objection_engine.git@e9c77593e6ef3729b5377f7ab528f9a6fe2c8d6b#egg=objection_engine
 opencv-python==4.11.0.86
 packaging==26.0
 Pillow==9.5.0
