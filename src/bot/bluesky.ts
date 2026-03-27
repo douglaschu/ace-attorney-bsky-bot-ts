@@ -31,7 +31,11 @@ export const getThread = async (
                embed?.$type === "app.bsky.embed.images#view" &&
                embed.images?.[0]?.fullsize
                     ? embed.images[0].fullsize
-                    : null;
+                    : (embed as any)?.$type ===
+                             "app.bsky.embed.recordWithMedia#view" &&
+                        (embed as any).media?.images?.[0]?.fullsize
+                      ? (embed as any).media.images[0].fullsize
+                      : null;
           const rawText = record.text.trim();
           let text = rawText;
           if (text === "") {
@@ -43,7 +47,10 @@ export const getThread = async (
           }
           if (
                !text.includes(`@${botHandle}`) &&
-               node.post.author.did !== agent.session?.did
+               !(
+                    node.post.author.did === agent.session?.did &&
+                    text.includes("All rise! Court is now in session")
+               )
           ) {
                posts.unshift({
                     handle: node.post.author.handle,
@@ -55,6 +62,44 @@ export const getThread = async (
                     imageUrl,
                });
           }
+
+          // extract quoted post from embed
+          const embedAny = embed as any;
+          let quotedRecord: any = null;
+          if (embedAny?.$type === "app.bsky.embed.record#view") {
+               quotedRecord = embedAny.record;
+          } else if (
+               embedAny?.$type === "app.bsky.embed.recordWithMedia#view"
+          ) {
+               quotedRecord = embedAny.record?.record;
+          }
+          if (
+               quotedRecord?.$type === "app.bsky.embed.record#viewRecord" &&
+               !(quotedRecord.value?.text ?? "").includes(`@${botHandle}`) &&
+               quotedRecord.author?.did !== agent.session?.did
+          ) {
+               const quotedText =
+                    ((quotedRecord.value?.text as string) ?? "").trim() ||
+                    "...";
+               const quotedEmbeds = quotedRecord.embeds as
+                    | { $type?: string; images?: { fullsize: string }[] }[]
+                    | undefined;
+               const quotedImageUrl =
+                    quotedEmbeds?.[0]?.$type === "app.bsky.embed.images#view" &&
+                    quotedEmbeds[0].images?.[0]?.fullsize
+                         ? quotedEmbeds[0].images[0].fullsize
+                         : null;
+               posts.unshift({
+                    handle: quotedRecord.author.handle,
+                    displayName:
+                         quotedRecord.author.displayName ||
+                         quotedRecord.author.handle,
+                    text: quotedText,
+                    did: quotedRecord.author.did,
+                    imageUrl: quotedImageUrl,
+               });
+          }
+
           node = node.parent ?? null;
      }
      return posts;
