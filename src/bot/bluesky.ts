@@ -46,7 +46,10 @@ export const getThread = async (
                }
           }
           if (
-               !text.includes(`@${botHandle}`) &&
+               !(
+                    text.includes(`@${botHandle}`) &&
+                    text.toLowerCase().includes("render")
+               ) &&
                !(
                     node.post.author.did === agent.session?.did &&
                     text.includes("All rise! Court is now in session")
@@ -75,7 +78,14 @@ export const getThread = async (
           }
           if (
                quotedRecord?.$type === "app.bsky.embed.record#viewRecord" &&
-               !(quotedRecord.value?.text ?? "").includes(`@${botHandle}`) &&
+               !(
+                    (quotedRecord.value?.text ?? "")
+                         .toLowerCase()
+                         .includes(`@${botHandle}`) &&
+                    (quotedRecord.value?.text ?? "")
+                         .toLowerCase()
+                         .includes("render")
+               ) &&
                quotedRecord.author?.did !== agent.session?.did
           ) {
                const quotedText =
