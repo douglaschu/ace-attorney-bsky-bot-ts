@@ -16,7 +16,7 @@ const toAtUri = (input: string): string => {
 };
 
 const TEST_URI = toAtUri(
-     "https://bsky.app/profile/brotheryassini.bsky.social/post/3mi36fbhev22o",
+     "https://bsky.app/profile/acecourtbot-jr.bsky.social/post/3mifaw2zqsv2c",
 );
 
 const TEST_URI_2 = toAtUri(
@@ -25,12 +25,12 @@ const TEST_URI_2 = toAtUri(
 
 const thread = await getThread(agent, TEST_URI, process.env.BLUESKY_USERNAME!);
 console.log(JSON.stringify(thread, null, 2));
-console.log(`\nTotal posts: ${thread.length}`);
+// console.log(`\nTotal posts: ${thread.length}`);
 
-const thread2 = await getThread(
-     agent,
-     TEST_URI_2,
-     process.env.BLUESKY_USERNAME!,
-);
-console.log(JSON.stringify(thread2, null, 2));
-console.log(`\nTotal posts: ${thread2.length}`);
+// const thread2 = await getThread(
+//      agent,
+//      TEST_URI_2,
+//      process.env.BLUESKY_USERNAME!,
+// );
+// console.log(JSON.stringify(thread2, null, 2));
+// console.log(`\nTotal posts: ${thread2.length}`);
