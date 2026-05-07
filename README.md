@@ -18,7 +18,7 @@ Bluesky bot that turns comment chains in Ace Attorney scenes. Inspired by https:
 
 2. Install dependencies
 
-    npm install
+        npm install
 
 3. Copy `.env.example` (or whatever config file your project uses) to `.env` and fill in your Bluesky credentials
 4. Build and run
