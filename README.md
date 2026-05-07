@@ -7,6 +7,8 @@ Bluesky bot that turns comment chains in Ace Attorney scenes. Inspired by https:
 
 - Everything included in the [objection_engine prerequisites](https://github.com/LuisMayo/objection_engine/blob/main/README.md#prerequisites)
 - Bluesky account credentials
+  - Handle
+  - App password  
 
 ### Installing
 
@@ -21,7 +23,7 @@ Bluesky bot that turns comment chains in Ace Attorney scenes. Inspired by https:
 3. Copy `.env.example` (or whatever config file your project uses) to `.env` and fill in your Bluesky credentials
 4. Build and run
 
-Alternatively, build and run with Docer:
+### Alternatively, build and run with Docker:
 
         docker build -t ace-attorney-bsky-bot .
     docker run ace-attorney-bsky-bot
