@@ -1,5 +1,5 @@
 import os
-os.environ["oe_bypass_sentiment"] = "1"
+# os.environ["oe_bypass_sentiment"] = "1"
 
 from objection_engine.renderer import render_comment_list
 from objection_engine.beans.comment import Comment
