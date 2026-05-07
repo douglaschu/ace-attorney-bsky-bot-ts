@@ -23,7 +23,8 @@ Bluesky bot that turns comment chains in Ace Attorney scenes. Inspired by https:
 3. Copy `.env.example` (or whatever config file your project uses) to `.env` and fill in your Bluesky credentials
 4. Build and run
 
-### Alternatively, build and run with Docker:
+### Docker Install
+Alternatively, build and run with Docker:
 
         docker build -t ace-attorney-bsky-bot .
         docker run ace-attorney-bsky-bot
