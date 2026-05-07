@@ -12,7 +12,7 @@ Bluesky bot that turns comment chains in Ace Attorney scenes. Inspired by https:
 
 1. Clone the repository
     
-    git clone https://github.com/douglaschu/ace-attorney-bsky-bot-ts.git
+        git clone https://github.com/douglaschu/ace-attorney-bsky-bot-ts.git
 
 2. Install dependencies
 
@@ -23,7 +23,7 @@ Bluesky bot that turns comment chains in Ace Attorney scenes. Inspired by https:
 
 Alternatively, build and run with Docer:
 
-    docker build -t ace-attorney-bsky-bot .
+        docker build -t ace-attorney-bsky-bot .
     docker run ace-attorney-bsky-bot
 
 
