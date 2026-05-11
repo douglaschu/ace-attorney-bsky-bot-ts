@@ -5,7 +5,7 @@ Bluesky bot that turns comment chains in Ace Attorney scenes. Inspired by https:
 ## Getting Started
 ### Prerequisites 
 
-- Everything included in the [objection_engine prerequisites](https://github.com/LuisMayo/objection_engine/blob/main/README.md#prerequisites)
+- Every item in the [objection_engine prerequisites](https://github.com/LuisMayo/objection_engine/blob/main/README.md#prerequisites)
 - Bluesky account credentials
   - Handle
   - App password  
