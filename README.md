@@ -33,7 +33,7 @@ Alternatively, build and run with Docker:
 
 ## Contributing
 
-Since this is a small project there are no strict contribution rules. Open a pull request to fix issues or make improvements. Contributions will be accepted as long as they don't deviate from the project's objectives. Open an issue first if you're unsure whether a change would be accepted.
+As with the other iterations of the Ace Attorney bot, I have no stringent rules around contribution due to the scale of hte project. If there's an issue you'd like to fix, or an improvement you'd like to implement, please open a pull request. All contributions that fit into the project's objectives are welcome. If you're unsure about a change you're suggesting, feel free to open an issue first.
 
 
 
